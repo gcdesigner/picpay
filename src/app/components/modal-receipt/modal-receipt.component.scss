@@ -1,0 +1,62 @@
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 1rem;
+
+  fa-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+
+    &.icon-success {
+      color: var(--success);
+    }
+
+    &.icon-error {
+      color: var(--danger);
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.receipt {
+  position: relative;
+  background-color: #fff9d7;
+  border: 2px dashed #ffebeb;
+  padding: 1rem;
+  border-radius: 6px;
+
+  .actions {
+    position: absolute;
+    right: 1rem;
+
+    button {
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      + button {
+        margin-left: 0.875rem;
+      }
+    }
+  }
+
+  .receipt-info {
+    > div {
+      + div {
+        margin-top: 0.5rem;
+      }
+
+      strong {
+        display: block;
+        font-size: 0.8rem;
+        color: #474971;
+      }
+    }
+  }
+}

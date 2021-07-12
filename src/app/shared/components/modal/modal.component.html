@@ -1,0 +1,18 @@
+<div class="modal-wrapper" [id]="modalId">
+  <div class="modal">
+    <div class="modal-header">
+      <h4 [innerHtml]="modalTitle"></h4>
+      <button type="button" class="close btn" (click)="close()">
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </button>
+    </div>
+
+    <div class="modal-content">
+      <ng-content select="[content]"></ng-content>
+    </div>
+
+    <div class="modal-footer" *ngIf="!noFooter">
+      <ng-content select="[footer]"></ng-content>
+    </div>
+  </div>
+</div>

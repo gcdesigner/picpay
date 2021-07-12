@@ -1,0 +1,23 @@
+@import "styles/btn";
+@import "styles/form";
+@import "styles/colors";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 1rem;
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+body {
+  border-top: 10px solid var(--primary);
+  padding: 1rem;
+}
+
+* {
+  font-family: "Open sans", sans-serif;
+}

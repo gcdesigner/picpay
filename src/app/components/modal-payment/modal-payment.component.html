@@ -1,0 +1,52 @@
+<form [formGroup]="paymentForm" *ngIf="!modalReceipt" (ngSubmit)="onSubmit()">
+  <app-modal modalId="payment" modalTitle="Efetuar pagamento">
+    <ng-container content>
+      <div class="receiverUser">
+        <strong>Beneficiário:</strong>
+        {{ user.name }}
+      </div>
+
+      <small class="help-text">Transferência mínima R$ 10,00</small>
+      <div class="amount">
+        <fa-icon [icon]="faMoneyBillAlt"></fa-icon>
+        <input
+          placeholder="R$ 0,00"
+          formControlName="amount"
+          currencyMask
+          [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+        />
+      </div>
+
+      <div class="cards">
+        <fa-icon [icon]="faCreditCard"></fa-icon>
+        <select formControlName="creditCard">
+          <option
+            selected
+            *ngFor="let card of creditCards; index as i"
+            [ngValue]="card"
+          >
+            Cartão com final {{ card.card_number | slice: -4 }}
+          </option>
+        </select>
+      </div>
+    </ng-container>
+
+    <ng-container footer>
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="paymentForm.status === 'INVALID' || isLoading"
+      >
+        <app-loading *ngIf="isLoading"></app-loading>
+        <fa-icon [icon]="faCheckCircle" *ngIf="!isLoading"></fa-icon>
+        <span>Pagar</span>
+      </button>
+    </ng-container>
+  </app-modal>
+</form>
+
+<app-modal-receipt
+  *ngIf="modalReceipt"
+  [transactionPayload]="transactionPayload"
+  [receiverUser]="user.name"
+></app-modal-receipt>

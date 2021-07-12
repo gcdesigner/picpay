@@ -1,0 +1,45 @@
+<div class="loading" *ngIf="isLoading">
+  <app-loading size="80px" color="#474971"></app-loading>
+</div>
+
+<header *ngIf="!isLoading">
+  <div class="filter">
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input type="text" placeholder="Filtrar pelo nome" [(ngModel)]="filter" />
+  </div>
+
+  <div class="actions">
+    <button type="button" class="btn btn-sm">
+      <fa-icon [icon]="faCreditCard"></fa-icon>
+      Meus pagamentos
+    </button>
+
+    <button type="button" class="btn btn-sm">
+      <img src="assets/foto-perfil.jpg" alt="Gabriel Costa" />
+      <span>Gabriel C.</span>
+    </button>
+  </div>
+</header>
+
+<div class="users">
+  <div
+    class="user"
+    *ngFor="let user of users | async | appFilter: filter:'name'; index as i"
+  >
+    <img [src]="user.img" />
+    <div class="info-wrapper">
+      <div class="user-name">{{ user.name }}</div>
+      <div class="user-id">ID: {{ user.id }}</div>
+      <div class="user-username">{{ user.username }}</div>
+    </div>
+
+    <button type="button" class="btn btn-sm" (click)="openModalPayment(user)">
+      Pagar
+    </button>
+  </div>
+</div>
+
+<app-modal-payment
+  *ngIf="modalPayment"
+  [user]="selectedUser"
+></app-modal-payment>

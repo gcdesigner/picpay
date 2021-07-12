@@ -1,0 +1,73 @@
+<app-modal modalTitle="Recibo de pagamento" [noFooter]="true">
+  <ng-container content>
+    <ng-container *ngIf="transactionPayload; else error">
+      <div class="message">
+        <fa-icon
+          [icon]="faCheckCircle"
+          size="lg"
+          class="icon-success"
+        ></fa-icon>
+        <p>
+          O pagamento para <strong>{{ receiverUser }}</strong> foi realizado com
+          sucesso.
+        </p>
+      </div>
+
+      <div class="receipt">
+        <div class="actions">
+          <button type="button" title="Imprimir">
+            <fa-icon [icon]="faPrint"></fa-icon>
+          </button>
+
+          <button type="button" title="Download">
+            <fa-icon [icon]="faDownload"></fa-icon>
+          </button>
+        </div>
+
+        <div class="receipt-info">
+          <div>
+            <strong>Recibo Nº</strong>
+            123456
+          </div>
+
+          <div>
+            <strong>Data/hora do pagamento</strong>
+            {{ receiptDate | date: "dd/MM/yyyy, HH:mm:ss" }}
+          </div>
+
+          <div>
+            <strong>Beneficiário</strong>
+            {{ receiverUser }}
+          </div>
+
+          <div>
+            <strong>Total: </strong>
+            {{ transactionPayload.value | currency: "BRL":true }}
+          </div>
+
+          <div>
+            <strong>Nº Cartão: </strong>
+            XXXXXXXXXXXX{{ transactionPayload.card_number | slice: -4 }}
+          </div>
+
+          <div>
+            <strong>CVV: </strong>
+            {{ transactionPayload.cvv }}
+          </div>
+
+          <div>
+            <strong>Data de validade: </strong>
+            {{ transactionPayload.expiry_date }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #error>
+      <div class="message">
+        <fa-icon [icon]="faTimesCircle" size="lg" class="icon-error"></fa-icon>
+        <p>O pagamento <strong>não</strong> foi concluído com sucesso.</p>
+      </div>
+    </ng-template>
+  </ng-container>
+</app-modal>

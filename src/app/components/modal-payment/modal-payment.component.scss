@@ -1,0 +1,41 @@
+.receiverUser {
+  margin-bottom: 1rem;
+  strong {
+    display: block;
+    font-size: 0.8rem;
+    color: #474971;
+  }
+}
+
+.amount,
+.cards {
+  position: relative;
+
+  fa-icon {
+    position: absolute;
+    top: 12px;
+    left: 1rem;
+    color: #ddd;
+  }
+}
+
+.amount {
+  input {
+    padding-left: 3rem;
+  }
+}
+
+.cards {
+  margin-top: 1rem;
+
+  select {
+    padding-left: 3rem;
+  }
+}
+
+button {
+  fa-icon {
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+  }
+}

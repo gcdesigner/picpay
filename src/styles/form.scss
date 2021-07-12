@@ -1,0 +1,33 @@
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  height: 48px;
+  padding: 0 1rem;
+
+  &.ng-touched.ng-invalid {
+    border-color: var(--danger);
+  }
+}
+
+select {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 1rem;
+  height: 48px;
+  padding: 0 0.875rem;
+
+  option {
+    padding: 1rem;
+  }
+}
+
+.help-text {
+  display: block;
+  text-align: right;
+  margin-bottom: 5px;
+  color: #aaa;
+}
